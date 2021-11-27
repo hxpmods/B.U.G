@@ -1,8 +1,0 @@
-C:\Users\Owen\Documents\B.U.G\.mono\temp\bin\Debug\B.U.G.dll
-C:\Users\Owen\Documents\B.U.G\.mono\temp\bin\Debug\B.U.G.pdb
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.csprojAssemblyReference.cache
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.AssemblyInfoInputs.cache
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.AssemblyInfo.cs
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.csproj.CoreCompileInputs.cache
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.dll
-C:\Users\Owen\Documents\B.U.G\.mono\temp\obj\Debug\B.U.G.pdb
