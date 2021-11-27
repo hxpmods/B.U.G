@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_slab_stone_small_drop_deep_water_plop_splash_001_75962.mp3-100156fc920f2e572eb3d9de661777fb.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_foley_slab_stone_small_drop_deep_water_plop_splash_001_75962.mp3"
+dest_files=[ "res://.import/zapsplat_foley_slab_stone_small_drop_deep_water_plop_splash_001_75962.mp3-100156fc920f2e572eb3d9de661777fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

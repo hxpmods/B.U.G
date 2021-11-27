@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Images/Projectiles/FlaxBullet.png" type="Texture" id=1]
+[ext_resource path="res://Source/GDScript/Projectiles/Projectile.gd" type="Script" id=2]
+[ext_resource path="res://Source/GDScript/Projectiles/ImpactHandlerDamage.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+maxSpeed = 200.0
+collisionMask = 8
+useCustomRange = true
+useLifetime = true
+lifeTime = 0.2
+impactHandlerPath = NodePath("ImpactHandler")
+
+[node name="ImpactHandler" type="Node2D" parent="."]
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 3 )
+damage = 10
+
+[node name="Bullet" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+z_index = 1
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 24, 16, 16 )

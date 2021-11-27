@@ -1,0 +1,109 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Source/CSharp/EntityComponents/TargetingComponent.cs" type="Script" id=1]
+[ext_resource path="res://Images/RedGnome.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Projectiles/FlaxBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source/GDScript/Towers/GnomeEntity.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/EntityComponents/TowerData.gd" type="Script" id=5]
+[ext_resource path="res://Source/GDScript/EntityComponents/Body.gd" type="Script" id=6]
+[ext_resource path="res://Source/GDScript/EntityComponents/ProjectileLauncher.gd" type="Script" id=7]
+[ext_resource path="res://Source/GDScript/SkillSystem/SkillUnlocker.gd" type="Script" id=8]
+[ext_resource path="res://Images/UpgradeDisplay.png" type="Texture" id=9]
+[ext_resource path="res://Source/GDScript/EntityComponents/Buildable.gd" type="Script" id=10]
+[ext_resource path="res://Source/GDScript/Managers/Currency.gd" type="Script" id=11]
+[ext_resource path="res://Source/GDScript/EntityComponents/RangedShootingController.gd" type="Script" id=12]
+[ext_resource path="res://Images/GreenGnome.png" type="Texture" id=13]
+[ext_resource path="res://Shaders/FlashingShader.tres" type="Material" id=14]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 160.0
+
+[node name="GreenGnome" type="Sprite"]
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( -16, -16 )
+flip_h = true
+script = ExtResource( 4 )
+
+[node name="Movable" type="Node" parent="." groups=["tower"]]
+script = ExtResource( 10 )
+blueprintSprite = ExtResource( 2 )
+
+[node name="Gold" type="Node" parent="Movable"]
+script = ExtResource( 11 )
+amount = 10
+
+[node name="Sellable" type="Node" parent="." groups=["tower"]]
+script = ExtResource( 10 )
+blueprintSprite = ExtResource( 2 )
+
+[node name="Gold" type="Node" parent="Sellable"]
+script = ExtResource( 11 )
+amount = 30
+
+[node name="Flax" type="Node" parent="Sellable"]
+script = ExtResource( 11 )
+amount = 20
+
+[node name="RangedShootingController" type="Node" parent="."]
+script = ExtResource( 12 )
+shootSpeed = 0.4
+projectileLauncherPath = NodePath("../ProjectileLauncher")
+targetingComponentPath = NodePath("../TargetingComponent")
+bulletScene = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="RangedShootingController"]
+
+[node name="Flax" type="Node" parent="RangedShootingController"]
+script = ExtResource( 11 )
+amount = 1
+
+[node name="EntityData" type="Node2D" parent="."]
+pause_mode = 2
+position = Vector2( 32, 32 )
+z_index = -1
+script = ExtResource( 5 )
+job = "Gnome Gunner"
+
+[node name="UpgradeDisplay" type="Sprite" parent="EntityData"]
+visible = false
+material = ExtResource( 14 )
+position = Vector2( 0, -6 )
+texture = ExtResource( 9 )
+
+[node name="ProjectileLauncher" type="Node2D" parent="."]
+position = Vector2( 32, 48 )
+script = ExtResource( 7 )
+projectileDamage = 10
+
+[node name="Body" type="Area2D" parent="."]
+pause_mode = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2( 32, 32 )
+shape = SubResource( 5 )
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+position = Vector2( 32, 32 )
+shape = SubResource( 7 )
+
+[node name="TargetingComponent" type="Node2D" parent="."]
+position = Vector2( 32, 48 )
+script = ExtResource( 1 )
+targetingGroup = "enemy"
+customTargetPath = NodePath("../TargetArea")
+
+[node name="SkillUnlocker" type="Node" parent="."]
+script = ExtResource( 8 )
+skillTreeName = "GreenGnome"
+entityDataPath = NodePath("../EntityData")
+
+[connection signal="timeout" from="RangedShootingController/Timer" to="RangedShootingController" method="_on_Timer_timeout"]
+[connection signal="ProjectileKilledEntity" from="ProjectileLauncher" to="EntityData" method="KilledEntity"]
+[connection signal="input_event" from="Body" to="Body" method="_on_Body_input_event"]

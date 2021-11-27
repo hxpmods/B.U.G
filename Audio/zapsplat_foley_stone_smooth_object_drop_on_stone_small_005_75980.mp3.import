@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_stone_smooth_object_drop_on_stone_small_005_75980.mp3-69db4ecc1e301cc1b104ac447c90fe94.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_foley_stone_smooth_object_drop_on_stone_small_005_75980.mp3"
+dest_files=[ "res://.import/zapsplat_foley_stone_smooth_object_drop_on_stone_small_005_75980.mp3-69db4ecc1e301cc1b104ac447c90fe94.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

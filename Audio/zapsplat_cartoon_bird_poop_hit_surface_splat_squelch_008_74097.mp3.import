@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_cartoon_bird_poop_hit_surface_splat_squelch_008_74097.mp3-08107c912e0b2a9501c48dbafa0867aa.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_cartoon_bird_poop_hit_surface_splat_squelch_008_74097.mp3"
+dest_files=[ "res://.import/zapsplat_cartoon_bird_poop_hit_surface_splat_squelch_008_74097.mp3-08107c912e0b2a9501c48dbafa0867aa.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

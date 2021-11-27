@@ -1,0 +1,221 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Theme/kenneyUI.tres" type="Theme" id=1]
+[ext_resource path="res://Images/Shelves.png" type="Texture" id=2]
+[ext_resource path="res://Images/Animation/Peony_00000.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/UI/PlantWithPot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Images/Animation/Flax_00000.png" type="Texture" id=6]
+[ext_resource path="res://Source/GDScript/Shop/UnlockBuildableShopItem.gd" type="Script" id=7]
+[ext_resource path="res://Source/GDScript/Shop/SeedsShopItem.gd" type="Script" id=8]
+[ext_resource path="res://Source/GDScript/UI/ShopControl.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Source/GDScript/Shop/PurchasePreviewPanel.gd" type="Script" id=11]
+[ext_resource path="res://Theme/kenneyUI-red.tres" type="Theme" id=12]
+[ext_resource path="res://Source/GDScript/Managers/Currency.gd" type="Script" id=13]
+[ext_resource path="res://Images/BlueGnome.png" type="Texture" id=14]
+
+[node name="ShopControl" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -352.0
+margin_bottom = -32.0
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+shopItemIconInstance = ExtResource( 5 )
+
+[node name="Inventory" type="Node" parent="."]
+
+[node name="FlaxSeedShopItem" type="Node" parent="Inventory"]
+script = ExtResource( 8 )
+humanName = "Flax"
+texture = ExtResource( 6 )
+seedToPurchase = "Flax"
+amount = 50
+
+[node name="Gold" type="Node" parent="Inventory/FlaxSeedShopItem"]
+script = ExtResource( 13 )
+amount = 150
+
+[node name="PeonySeedShopItem" type="Node" parent="Inventory"]
+script = ExtResource( 8 )
+humanName = "Peony"
+texture = ExtResource( 4 )
+seedToPurchase = "Peony"
+amount = 100
+
+[node name="Gold" type="Node" parent="Inventory/PeonySeedShopItem"]
+script = ExtResource( 13 )
+amount = 1000
+
+[node name="UnlockFisherGnomeShopItem" type="Node" parent="Inventory"]
+script = ExtResource( 7 )
+humanName = "Fisher"
+texture = ExtResource( 14 )
+buildableToUnlock = "FisherGnome"
+
+[node name="Gold" type="Node" parent="Inventory/UnlockFisherGnomeShopItem"]
+script = ExtResource( 13 )
+amount = 140
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1536.0
+margin_bottom = 1016.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -736.0
+margin_top = -389.0
+margin_right = 312.0
+margin_bottom = 480.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 57.0
+margin_top = -87.0
+margin_right = -65.0
+margin_bottom = -87.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/TextureRect/MarginContainer"]
+margin_right = 926.0
+margin_bottom = 869.0
+
+[node name="ShopRow1" type="HBoxContainer" parent="Panel/Panel/TextureRect/MarginContainer/VBoxContainer"]
+margin_right = 926.0
+custom_constants/separation = -10
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/TextureRect/MarginContainer/VBoxContainer"]
+margin_top = 4.0
+margin_right = 926.0
+margin_bottom = 48.29
+rect_min_size = Vector2( 0, 44.29 )
+
+[node name="ShopRow2" type="HBoxContainer" parent="Panel/Panel/TextureRect/MarginContainer/VBoxContainer"]
+margin_top = 52.0
+margin_right = 926.0
+margin_bottom = 52.0
+custom_constants/separation = -10
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/Panel/TextureRect/MarginContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 926.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="ShopRow3" type="HBoxContainer" parent="Panel/Panel/TextureRect/MarginContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 926.0
+margin_bottom = 108.0
+custom_constants/separation = -10
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -411.0
+margin_top = 230.0
+margin_right = -16.0
+margin_bottom = -116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel/Panel/MarginContainer"]
+margin_right = 395.0
+margin_bottom = 606.0
+theme = ExtResource( 12 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PurchasePreviewPanel" type="Panel" parent="Panel/Panel/MarginContainer/Panel/MarginContainer"]
+margin_right = 331.0
+margin_bottom = 542.0
+theme = ExtResource( 1 )
+script = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
+margin_top = 205.0
+margin_right = 331.0
+margin_bottom = 237.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Item Name"
+align = 1
+
+[node name="QuantityLabel" type="Label" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
+margin_top = 241.0
+margin_right = 331.0
+margin_bottom = 273.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Quantity: %s"
+align = 1
+
+[node name="MarginContainer" type="CenterContainer" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
+margin_top = 277.0
+margin_right = 331.0
+margin_bottom = 337.0
+size_flags_vertical = 0
+
+[node name="PurchaseButton" type="Button" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer/MarginContainer"]
+margin_left = 62.0
+margin_right = 267.324
+margin_bottom = 60.0
+rect_min_size = Vector2( 180, 60 )
+custom_colors/font_color_disabled = Color( 0.411765, 0.411765, 0.411765, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Purchase"
+
+[connection signal="pressed" from="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer/MarginContainer/PurchaseButton" to="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel" method="_on_PurchaseButton_pressed"]

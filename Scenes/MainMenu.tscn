@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/TitleScreenOver_00000.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Theme/kenneyUI.tres" type="Theme" id=3]
+[ext_resource path="res://Theme/kenneyUI-yellow.tres" type="Theme" id=4]
+[ext_resource path="res://Images/TitleCard.png" type="Texture" id=5]
+[ext_resource path="res://Images/GI Gnome.png" type="Texture" id=6]
+[ext_resource path="res://Images/Lumber Gnome.png" type="Texture" id=7]
+[ext_resource path="res://Source/GDScript/UI/MainMenu.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Game.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Images/TitleScreen_00000.png" type="Texture" id=10]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+pause_mode = 2
+
+[node name="MainMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 4 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+gameScene = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="MarginContainer" parent="MainMenu/TextureRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = 128.0
+margin_right = 300.0
+margin_bottom = -128.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MainMenu/TextureRect/CenterContainer"]
+margin_right = 600.0
+margin_bottom = 824.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/TextureRect/CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 96.0
+margin_top = 32.0
+margin_right = -96.0
+margin_bottom = -32.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+custom_constants/separation = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer"]
+margin_right = 408.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 250 )
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 24.0
+margin_right = -16.0
+margin_bottom = -22.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer"]
+margin_top = 282.0
+margin_right = 408.0
+margin_bottom = 682.0
+rect_min_size = Vector2( 0, 400 )
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+mouse_filter = 2
+theme = SubResource( 1 )
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer"]
+margin_right = 344.0
+margin_bottom = 56.251
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+text = "New Game"
+
+[node name="Button2" type="Button" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer"]
+margin_top = 64.0
+margin_right = 344.0
+margin_bottom = 120.251
+mouse_default_cursor_shape = 2
+shortcut_in_tooltip = false
+text = "Settings"
+
+[node name="LumberGnome" type="Sprite" parent="MainMenu"]
+position = Vector2( 600, 728 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 7 )
+
+[node name="GiGnome" type="Sprite" parent="MainMenu"]
+position = Vector2( 1315, 792 )
+rotation = -0.0785398
+scale = Vector2( 0.14, 0.14 )
+texture = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer/Button" to="MainMenu" method="_on_Button_pressed"]
+[connection signal="pressed" from="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer/Button2" to="MainMenu" method="_on_Button_pressed"]

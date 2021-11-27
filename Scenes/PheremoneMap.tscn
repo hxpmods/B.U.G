@@ -1,0 +1,5 @@
+[gd_scene format=2]
+
+[node name="PheremoneMap" type="Sprite"]
+scale = Vector2( 4, 4 )
+centered = false

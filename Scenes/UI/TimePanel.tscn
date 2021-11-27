@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Theme/kenneyUI-yellow.tres" type="Theme" id=1]
+[ext_resource path="res://Images/UI/Buttons/PlayPressed.png" type="Texture" id=2]
+[ext_resource path="res://Images/UI/Buttons/PauseHover.png" type="Texture" id=3]
+[ext_resource path="res://Theme/kenneyUICustom.tres" type="Theme" id=4]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Images/UI/Buttons/PauseNormal.png" type="Texture" id=6]
+[ext_resource path="res://Source/GDScript/UI/TimePanel.gd" type="Script" id=7]
+[ext_resource path="res://Images/UI/Buttons/NextWaveDisabled.png" type="Texture" id=8]
+[ext_resource path="res://Images/UI/Buttons/NextWavePressed.png" type="Texture" id=9]
+[ext_resource path="res://Images/UI/Buttons/NextWaveNormal.png" type="Texture" id=10]
+[ext_resource path="res://Images/UI/Buttons/PlayDisabled.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Audio/ButtonAudio.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Images/UI/Buttons/GoldHover.png" type="Texture" id=14]
+[ext_resource path="res://Images/UI/Buttons/GoldNormal.png" type="Texture" id=15]
+[ext_resource path="res://Images/UI/Buttons/GoldPressed.png" type="Texture" id=16]
+[ext_resource path="res://Images/UI/Buttons/GoldDisabled.png" type="Texture" id=17]
+
+[node name="TimePanel" type="Panel"]
+margin_top = 852.0
+margin_right = 296.0
+margin_bottom = 1048.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 15.0
+margin_right = -8.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DayCounter" type="Label" parent="VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "Day: %s"
+
+[node name="InfoText" type="Label" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 280.0
+margin_bottom = 75.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Total Bugs Killed: %s
+"
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 79.0
+margin_right = 280.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonHolder" type="HBoxContainer" parent="VBoxContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 8.0
+margin_bottom = -8.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausePlayButton" type="TextureButton" parent="VBoxContainer/Control/ButtonHolder"]
+margin_left = 31.0
+margin_right = 101.0
+margin_bottom = 81.0
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+texture_disabled = ExtResource( 11 )
+
+[node name="NextWaveButton" type="TextureButton" parent="VBoxContainer/Control/ButtonHolder"]
+margin_left = 105.0
+margin_right = 175.0
+margin_bottom = 81.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+
+[node name="CashInButton" type="TextureButton" parent="VBoxContainer/Control/ButtonHolder"]
+margin_left = 179.0
+margin_right = 249.0
+margin_bottom = 81.0
+toggle_mode = true
+texture_normal = ExtResource( 15 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 14 )
+texture_disabled = ExtResource( 17 )
+
+[node name="ButtonAudio" parent="." instance=ExtResource( 12 )]
+
+[connection signal="button_down" from="VBoxContainer/Control/ButtonHolder/PausePlayButton" to="ButtonAudio" method="Play"]
+[connection signal="toggled" from="VBoxContainer/Control/ButtonHolder/PausePlayButton" to="." method="_on_PausePlayButton_toggled"]
+[connection signal="button_down" from="VBoxContainer/Control/ButtonHolder/NextWaveButton" to="ButtonAudio" method="Play"]
+[connection signal="pressed" from="VBoxContainer/Control/ButtonHolder/NextWaveButton" to="." method="_on_NextWaveButton_pressed"]
+[connection signal="button_down" from="VBoxContainer/Control/ButtonHolder/CashInButton" to="ButtonAudio" method="Play"]
+[connection signal="toggled" from="VBoxContainer/Control/ButtonHolder/CashInButton" to="." method="_on_ShopButton_toggled"]

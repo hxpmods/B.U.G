@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Source/GDScript/SkillSystem/Skill.gd" type="Script" id=1]
+[ext_resource path="res://Source/GDScript/SkillSystem/SkillTree.gd" type="Script" id=2]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseRangeUpgrade.gd" type="Script" id=3]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseMeleeSpeedUpgrade.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseDamageUpgrade.gd" type="Script" id=5]
+
+[node name="SkillTree" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Grabbier" type="Node" parent="."]
+script = ExtResource( 1 )
+UnlocksSkills = [ NodePath("../StrengthSkill") ]
+humanName = "Grabbier"
+description = "Increase punching range."
+isRoot = true
+
+[node name="RangeUpgrade" type="Node" parent="Grabbier"]
+script = ExtResource( 3 )
+
+[node name="SpeedSkill" type="Node" parent="."]
+script = ExtResource( 1 )
+UnlocksSkills = [ NodePath("../ReallyRapid") ]
+humanName = "Faster"
+description = "Hits 'em faster."
+isRoot = true
+
+[node name="IncreaseMeleeSpeedUpgrade" type="Node" parent="SpeedSkill"]
+script = ExtResource( 4 )
+
+[node name="ReallyRapid" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Even Faster"
+cost = 2
+description = "Turbo Charged."
+
+[node name="IncreaseMeleeSpeedUpgrade" type="Node" parent="ReallyRapid"]
+script = ExtResource( 4 )
+increaseBy = 0.15
+
+[node name="StrengthSkill" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Stronger"
+description = "Hits 'em harder."
+
+[node name="IncreaseDamageUpgrade" type="Node" parent="StrengthSkill"]
+script = ExtResource( 5 )

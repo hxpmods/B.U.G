@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=23]
+code = "shader_type canvas_item;
+
+uniform vec4 flashColor: hint_color =vec4(1.0);
+uniform float flashAmount : hint_range(0.0, 10.0) = 0.8;
+uniform float flashRate : hint_range(0.0, 10.0) = 1;
+
+void fragment(){
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flashColor.rgb,((sin(TIME*flashRate)+1.0)*0.5)*flashAmount);
+	COLOR= color;
+}"
+
+[resource]
+shader = SubResource( 23 )
+shader_param/flashColor = Color( 1, 1, 1, 1 )
+shader_param/flashAmount = 0.25
+shader_param/flashRate = 4.0

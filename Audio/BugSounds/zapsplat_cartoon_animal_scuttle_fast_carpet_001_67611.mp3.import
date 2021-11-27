@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_cartoon_animal_scuttle_fast_carpet_001_67611.mp3-864a2125b1a8d76110f303bc76b9d50d.mp3str"
+
+[deps]
+
+source_file="res://Audio/BugSounds/zapsplat_cartoon_animal_scuttle_fast_carpet_001_67611.mp3"
+dest_files=[ "res://.import/zapsplat_cartoon_animal_scuttle_fast_carpet_001_67611.mp3-864a2125b1a8d76110f303bc76b9d50d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

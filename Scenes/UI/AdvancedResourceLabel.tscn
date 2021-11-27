@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/ResourceLabel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Source/GDScript/UI/AdvancedResourceLabel.gd" type="Script" id=2]
+
+[node name="VBoxContainer" type="HBoxContainer"]
+margin_right = 124.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 150, 0 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResourceLabel" parent="." instance=ExtResource( 1 )]
+margin_right = 55.0
+size_flags_horizontal = 0
+
+[node name="PreviewLabel" type="Label" parent="."]
+margin_left = 59.0
+margin_top = 9.0
+margin_right = 59.0
+margin_bottom = 23.0

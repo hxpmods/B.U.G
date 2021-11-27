@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Audio/zapsplat_impact_body_heavy_splat_squelch_guts_bones_break_13492.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Source/GDScript/Audio/SplatAudio.gd" type="Script" id=2]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -10.0
+autoplay = true
+bus = "Splatters"
+script = ExtResource( 2 )
+
+[connection signal="finished" from="." to="." method="_on_AudioStreamPlayer_finished"]

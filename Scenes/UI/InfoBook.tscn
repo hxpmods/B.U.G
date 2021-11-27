@@ -1,0 +1,220 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Images/RedGnome.png" type="Texture" id=1]
+[ext_resource path="res://Images/UI/CharacterBook.png" type="Texture" id=2]
+[ext_resource path="res://Theme/kenneyUICustom.tres" type="Theme" id=3]
+[ext_resource path="res://Theme/kenvector_future.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/UI/Buttons/SettingsHover.png" type="Texture" id=5]
+[ext_resource path="res://Images/UI/Buttons/SettingsNormal.png" type="Texture" id=6]
+[ext_resource path="res://Images/UI/Buttons/GoldHover.png" type="Texture" id=7]
+[ext_resource path="res://Images/UI/Buttons/GoldNormal.png" type="Texture" id=8]
+[ext_resource path="res://Images/UI/Buttons/GoldPressed.png" type="Texture" id=9]
+[ext_resource path="res://Images/UI/Buttons/MoveNormal.png" type="Texture" id=10]
+[ext_resource path="res://Images/UI/Buttons/MovePressed.png" type="Texture" id=11]
+[ext_resource path="res://Images/UI/Buttons/MoveHover.png" type="Texture" id=12]
+[ext_resource path="res://Images/UI/Buttons/SettingsPressed.png" type="Texture" id=13]
+[ext_resource path="res://Source/GDScript/UI/InfoBook.gd" type="Script" id=14]
+[ext_resource path="res://Images/UI/Buttons/UpgradePressed.png" type="Texture" id=15]
+[ext_resource path="res://Images/UI/Buttons/UpgradeNormal.png" type="Texture" id=16]
+[ext_resource path="res://Images/UI/Buttons/UpgradeHover.png" type="Texture" id=17]
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 4 )
+
+[node name="InfoBookContainer" type="HSplitContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+split_offset = 418
+dragger_visibility = 1
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_right = 418.0
+margin_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -67.0
+margin_top = -106.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EntityTexture" type="TextureRect" parent="Control/TextureRect"]
+margin_left = 47.0
+margin_top = 157.0
+margin_right = 111.0
+margin_bottom = 221.0
+rect_rotation = -19.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="VBoxContainer" parent="Control/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 247.0
+margin_top = 28.0
+margin_right = -50.0
+margin_bottom = -21.0
+rect_rotation = -2.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleText" type="Label" parent="Control/TextureRect/Control"]
+margin_right = 209.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Melvin"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/TextureRect/Control"]
+margin_top = 40.0
+margin_right = 209.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BodyText" type="Label" parent="Control/TextureRect/Control"]
+margin_top = 44.0
+margin_right = 209.0
+margin_bottom = 228.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Profession:
+	%s
+	Total Kill Amount:
+	%s
+	Level:
+	%s
+	Kills to next Level:
+	%s
+	Unspent Experience:
+	%s
+	"
+
+[node name="Control2" type="Control" parent="."]
+margin_left = 430.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContextPanel" type="Panel" parent="Control2/MarginContainer"]
+margin_right = 1482.0
+margin_bottom = 1064.0
+theme = ExtResource( 3 )
+
+[node name="CenterContainer" type="MarginContainer" parent="Control2/MarginContainer/ContextPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/MarginContainer/ContextPanel/CenterContainer"]
+margin_right = 1474.0
+margin_bottom = 1056.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopContext" type="HBoxContainer" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer"]
+margin_right = 1474.0
+margin_bottom = 70.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsButton" type="TextureButton" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/TopContext"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 5 )
+
+[node name="PriorityLabel" type="Label" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/TopContext"]
+margin_left = 78.0
+margin_top = 26.0
+margin_right = 169.0
+margin_bottom = 44.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Closest"
+
+[node name="BottomContext" type="HBoxContainer" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer"]
+margin_top = 78.0
+margin_right = 1474.0
+margin_bottom = 148.0
+custom_constants/separation = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MoveButton" type="TextureButton" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeButton" type="TextureButton" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext"]
+margin_left = 78.0
+margin_right = 148.0
+margin_bottom = 70.0
+toggle_mode = true
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DestroyButton" type="TextureButton" parent="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext"]
+margin_left = 156.0
+margin_right = 226.0
+margin_bottom = 70.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/TopContext/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="mouse_entered" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/MoveButton" to="." method="_on_MoveButton_mouse_entered"]
+[connection signal="mouse_exited" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/MoveButton" to="." method="_on_MoveButton_mouse_exited"]
+[connection signal="pressed" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/MoveButton" to="." method="_on_MoveButton_pressed"]
+[connection signal="toggled" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/UpgradeButton" to="." method="_on_UpgradeButton_toggled"]
+[connection signal="mouse_entered" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/DestroyButton" to="." method="_on_DestroyButton_mouse_entered"]
+[connection signal="mouse_exited" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/DestroyButton" to="." method="_on_DestroyButton_mouse_exited"]
+[connection signal="pressed" from="Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/DestroyButton" to="." method="_on_DestroyButton_pressed"]

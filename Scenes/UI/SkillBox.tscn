@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Theme/kenneyUI.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Theme/kenneyUI-red.tres" type="Theme" id=3]
+[ext_resource path="res://Source/GDScript/UI/SkillBox.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/UI/SkillOutPort.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool isSelected = false;
+uniform bool isBought = false;
+uniform bool isDisabled = false;
+
+void fragment(){
+	vec4 col = texture(TEXTURE, UV);
+	if (isSelected == true)
+	{
+	col.rgb = vec3(1.0f)-col.rgb;
+	}
+	if (isDisabled == true)
+	{
+	col.rgb = vec3(col.g);
+	}
+	if (isBought)
+	{
+	col.rg = vec2(1.0f)-col.rg;
+	}
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/isSelected = false
+shader_param/isBought = false
+shader_param/isDisabled = false
+
+[node name="SkillBox" type="Panel"]
+material = SubResource( 2 )
+margin_top = 228.0
+margin_right = 300.0
+margin_bottom = 428.0
+rect_min_size = Vector2( 300, 200 )
+mouse_default_cursor_shape = 2
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainerIn" type="CenterContainer" parent="HBoxContainer"]
+margin_right = 1.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 1, 0 )
+
+[node name="InPort" type="Control" parent="HBoxContainer/MarginContainerIn"]
+margin_top = 100.0
+margin_bottom = 100.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 5.0
+margin_right = 295.0
+margin_bottom = 200.0
+mouse_filter = 2
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+text = "Skill Name"
+align = 1
+
+[node name="MarginContainer" type="Control" parent="HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 290.0
+margin_bottom = 200.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+margin_right = 274.0
+margin_bottom = 148.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BodyTextLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/Panel/MarginContainer"]
+margin_right = 258.0
+margin_bottom = 132.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "This is our Skill Description."
+autowrap = true
+
+[node name="MarginContainerOut" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 299.0
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 1, 0 )
+
+[node name="OutPort" type="Control" parent="HBoxContainer/MarginContainerOut"]
+margin_top = 100.0
+margin_bottom = 100.0
+script = ExtResource( 5 )
+
+[connection signal="gui_input" from="." to="." method="_on_SkillBox_gui_input"]

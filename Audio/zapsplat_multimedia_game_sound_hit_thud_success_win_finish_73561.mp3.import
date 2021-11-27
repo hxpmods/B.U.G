@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_sound_hit_thud_success_win_finish_73561.mp3-93e8c3f89fb7a010c32e790f0140093b.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_multimedia_game_sound_hit_thud_success_win_finish_73561.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_sound_hit_thud_success_win_finish_73561.mp3-93e8c3f89fb7a010c32e790f0140093b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

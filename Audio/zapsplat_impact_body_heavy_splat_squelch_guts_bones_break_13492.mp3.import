@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_impact_body_heavy_splat_squelch_guts_bones_break_13492.mp3-4a3e0d13c261b02023f5c347bb9e5391.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_impact_body_heavy_splat_squelch_guts_bones_break_13492.mp3"
+dest_files=[ "res://.import/zapsplat_impact_body_heavy_splat_squelch_guts_bones_break_13492.mp3-4a3e0d13c261b02023f5c347bb9e5391.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Source/GDScript/SkillSystem/Skill.gd" type="Script" id=1]
+[ext_resource path="res://Source/GDScript/SkillSystem/SkillTree.gd" type="Script" id=2]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseRangeUpgrade.gd" type="Script" id=3]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseRangedSpeedUpgrade.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/SkillSystem/AddRangedBulletCost.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Projectiles/FlaxFrag.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Source/GDScript/SkillSystem/ChangeRangedBulletUpgrade.gd" type="Script" id=7]
+
+[node name="SkillTree" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FullBarrel" type="Node" parent="."]
+script = ExtResource( 1 )
+UnlocksSkills = [ NodePath("../FragBullets") ]
+humanName = "Full Barrel"
+description = "Increases shooting speed."
+isRoot = true
+
+[node name="IncreaseRangedSpeedUpgrade" type="Node" parent="FullBarrel"]
+script = ExtResource( 4 )
+
+[node name="SharpEye" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Sharp Eye"
+description = "Shoots faster."
+isRoot = true
+
+[node name="RangeUpgrade" type="Node" parent="SharpEye"]
+script = ExtResource( 3 )
+increaseBy = 32
+
+[node name="FragBullets" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Flax Frag"
+cost = 2
+description = "Bullet splits into 4 flax fragments on impact.
++1 Flax per bullet."
+
+[node name="AddRangedBulletCostUpgrade" type="Node" parent="FragBullets"]
+script = ExtResource( 5 )
+currency = "Flax"
+
+[node name="ChangeRangedBulletUpgrade" type="Node" parent="FragBullets"]
+script = ExtResource( 7 )
+bulletScene = ExtResource( 6 )

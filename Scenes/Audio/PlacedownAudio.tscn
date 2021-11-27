@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Audio/zapsplat_foley_piece_of_stone_set_down_on_concrete_002_75960.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Source/GDScript/Audio/SplatAudio.gd" type="Script" id=2]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -4.0
+pitch_scale = 0.7
+autoplay = true
+script = ExtResource( 2 )
+pitch_base = 0.7
+
+[connection signal="finished" from="." to="." method="_on_AudioStreamPlayer_finished"]

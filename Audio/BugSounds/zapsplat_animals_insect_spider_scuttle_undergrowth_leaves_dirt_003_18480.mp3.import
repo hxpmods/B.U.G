@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_animals_insect_spider_scuttle_undergrowth_leaves_dirt_003_18480.mp3-2bfd569440284687e8ce3c2489c7f844.mp3str"
+
+[deps]
+
+source_file="res://Audio/BugSounds/zapsplat_animals_insect_spider_scuttle_undergrowth_leaves_dirt_003_18480.mp3"
+dest_files=[ "res://.import/zapsplat_animals_insect_spider_scuttle_undergrowth_leaves_dirt_003_18480.mp3-2bfd569440284687e8ce3c2489c7f844.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

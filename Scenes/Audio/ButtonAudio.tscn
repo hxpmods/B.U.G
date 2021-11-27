@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Source/GDScript/UI/ButtonAudio.gd" type="Script" id=1]
+[ext_resource path="res://Audio/zapsplat_multimedia_button_click_001_68773.mp3" type="AudioStream" id=2]
+
+[node name="ButtonAudio" type="AudioStreamPlayer"]
+stream = ExtResource( 2 )
+script = ExtResource( 1 )

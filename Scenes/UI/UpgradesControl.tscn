@@ -1,0 +1,158 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Theme/kenneyUI.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/UI/SkillBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/UI/SkillRow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source/GDScript/UI/UpgradesControl.gd" type="Script" id=4]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Theme/kenneyUI-red.tres" type="Theme" id=12]
+
+[node name="UpgradesControl" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -352.0
+margin_bottom = -32.0
+theme = ExtResource( 12 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+rowScene = ExtResource( 3 )
+skillBoxScene = ExtResource( 2 )
+skillCollumnsPath = NodePath("Panel/Panel/VBoxContainer/SkillCollumns")
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1536.0
+margin_bottom = 1016.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillCollumns" type="HBoxContainer" parent="Panel/Panel/VBoxContainer"]
+margin_right = 1472.0
+margin_bottom = 798.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 128
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillRow1" parent="Panel/Panel/VBoxContainer/SkillCollumns" instance=ExtResource( 3 )]
+margin_left = 736.0
+margin_right = 736.0
+margin_bottom = 798.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/VBoxContainer"]
+margin_top = 802.0
+margin_right = 1472.0
+margin_bottom = 952.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="Panel/Panel/VBoxContainer/MarginContainer"]
+margin_right = 1472.0
+margin_bottom = 150.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/VBoxContainer/MarginContainer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 966.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer"]
+margin_right = 490.0
+margin_bottom = 134.0
+theme = ExtResource( 12 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel/HBoxContainer"]
+margin_right = 235.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel/HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Skill Points: 0"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel/HBoxContainer"]
+margin_left = 239.0
+margin_right = 474.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel/HBoxContainer/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -32.0
+custom_colors/font_color_disabled = Color( 0.733333, 0.733333, 0.733333, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
+disabled = true
+text = "UPGRADE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Panel/Panel/VBoxContainer/MarginContainer/Control/MarginContainer/Panel/HBoxContainer/Panel2/Button" to="." method="_on_UpgradeButton_pressed"]

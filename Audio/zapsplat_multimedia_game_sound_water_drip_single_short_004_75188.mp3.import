@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_multimedia_game_sound_water_drip_single_short_004_75188.mp3-858c998b67f30ab0f1bafd89c198e1c1.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_multimedia_game_sound_water_drip_single_short_004_75188.mp3"
+dest_files=[ "res://.import/zapsplat_multimedia_game_sound_water_drip_single_short_004_75188.mp3-858c998b67f30ab0f1bafd89c198e1c1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

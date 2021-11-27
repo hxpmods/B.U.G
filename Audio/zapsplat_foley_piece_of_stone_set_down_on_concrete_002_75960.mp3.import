@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/zapsplat_foley_piece_of_stone_set_down_on_concrete_002_75960.mp3-e9ec6d014f67f3c64e5f2b9e054fc346.mp3str"
+
+[deps]
+
+source_file="res://Audio/zapsplat_foley_piece_of_stone_set_down_on_concrete_002_75960.mp3"
+dest_files=[ "res://.import/zapsplat_foley_piece_of_stone_set_down_on_concrete_002_75960.mp3-e9ec6d014f67f3c64e5f2b9e054fc346.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

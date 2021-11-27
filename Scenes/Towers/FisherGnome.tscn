@@ -1,0 +1,95 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Source/CSharp/EntityComponents/TargetingComponent.cs" type="Script" id=1]
+[ext_resource path="res://Images/BlueGnome.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Projectiles/GnomeFishDamage.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Source/GDScript/Towers/GnomeEntity.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/EntityComponents/TowerData.gd" type="Script" id=5]
+[ext_resource path="res://Source/GDScript/EntityComponents/Body.gd" type="Script" id=6]
+[ext_resource path="res://Source/GDScript/EntityComponents/ProjectileLauncher.gd" type="Script" id=7]
+[ext_resource path="res://Source/GDScript/EntityComponents/MeleeShootingController.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Projectiles/GnomeFish.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Source/GDScript/Managers/Currency.gd" type="Script" id=10]
+[ext_resource path="res://Source/GDScript/EntityComponents/Buildable.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 192.0
+
+[node name="FisherGnome" type="Sprite"]
+position = Vector2( 448, 320 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( -16, -16 )
+flip_h = true
+script = ExtResource( 4 )
+
+[node name="MeleeShootingController" type="Node" parent="."]
+script = ExtResource( 8 )
+shootSpeed = 0.25
+projectileLauncherPath = NodePath("../ProjectileLauncher")
+targetingComponentPath = NodePath("../TargetingComponent")
+harvestingComponentPath = NodePath("../HarvestingComponent")
+bulletScene = ExtResource( 3 )
+harvestBulletScene = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="MeleeShootingController"]
+
+[node name="EntityData" type="Node2D" parent="."]
+pause_mode = 2
+position = Vector2( 32, 32 )
+script = ExtResource( 5 )
+job = "Fisherman"
+
+[node name="ProjectileLauncher" type="Node2D" parent="."]
+position = Vector2( 32, 48 )
+script = ExtResource( 7 )
+
+[node name="Body" type="Area2D" parent="."]
+pause_mode = 2
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2( 32, 32 )
+shape = SubResource( 5 )
+
+[node name="TargetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea"]
+position = Vector2( 32, 32 )
+shape = SubResource( 6 )
+
+[node name="TargetingComponent" type="Node2D" parent="."]
+position = Vector2( 32, 48 )
+script = ExtResource( 1 )
+targetingGroup = "enemy"
+customTargetPath = NodePath("../TargetArea")
+
+[node name="HarvestingComponent" type="Node2D" parent="."]
+position = Vector2( 32, 48 )
+script = ExtResource( 1 )
+targetingGroup = "fishable"
+customTargetPath = NodePath("../TargetArea")
+
+[node name="Movable" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Gold" type="Node" parent="Movable"]
+script = ExtResource( 10 )
+amount = 10
+
+[node name="Sellable" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="Gold" type="Node" parent="Sellable"]
+script = ExtResource( 10 )
+amount = 20
+
+[node name="Flax" type="Node" parent="Sellable"]
+script = ExtResource( 10 )
+amount = 16
+
+[connection signal="timeout" from="MeleeShootingController/Timer" to="MeleeShootingController" method="_on_Timer_timeout"]
+[connection signal="input_event" from="Body" to="Body" method="_on_Body_input_event"]

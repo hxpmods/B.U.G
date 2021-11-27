@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Theme/kenneyUICustom.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/LocomotiveLarge.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Source/GDScript/UI/SummaryPanel.gd" type="Script" id=3]
+
+[node name="SummaryPanel" type="Panel"]
+margin_top = 653.0
+margin_right = 296.0
+margin_bottom = 848.0
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 15.0
+margin_right = -8.0
+margin_bottom = -15.0
+
+[node name="JobTitle" type="Label" parent="Control"]
+margin_right = 280.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Bug Puncher"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoText" type="Label" parent="Control"]
+margin_top = 36.0
+margin_right = 280.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "A cheap melee combat unit. In it for the thrill, not the flax."
+autowrap = true

@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Audio/BugSounds/zapsplat_animals_insect_spider_long_legged_run_scuttle_through_leaves_dirt_undergrowth_18475.mp3" type="AudioStream" id=1]
+[ext_resource path="res://Audio/BugSounds/zapsplat_cartoon_animal_scuttle_fast_carpet_001_67611.mp3" type="AudioStream" id=2]
+[ext_resource path="res://Audio/BugSounds/zapsplat_cartoon_insect_scuttle_fast_001_58546.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Source/GDScript/Audio/BugAudio.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/Audio/AdaptiveAudio.gd" type="Script" id=5]
+
+[node name="BugAudio" type="Node"]
+script = ExtResource( 4 )
+intensity = 0.0
+
+[node name="Layer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -60.0
+autoplay = true
+bus = "Bug"
+script = ExtResource( 5 )
+intensity = 0.0
+att = 80.0
+power = 0.7
+_floor = -30.0
+
+[node name="Layer1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -60.0
+autoplay = true
+bus = "Bug"
+script = ExtResource( 5 )
+intensity = 0.0
+att = 80.0
+power = 0.5
+_floor = -20.0
+
+[node name="FastScuttle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -60.0
+autoplay = true
+bus = "Bug"
+script = ExtResource( 5 )
+intensity = 0.0
+att = 50.0
+power = 0.8
+max_volume = -20
+_floor = -40.0
+
+[node name="Layer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -60.0
+autoplay = true
+bus = "Bug"
+script = ExtResource( 5 )
+intensity = 0.0
+att = 80.0
+power = 0.8
+_floor = -40.0
