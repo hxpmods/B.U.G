@@ -10,7 +10,7 @@ func SetPreview(var shopItem : ShopItem):
 			preview = shopItem
 			GameManager.ResourceManager.ClearCosts()
 			
-			$"VBoxContainer".visible = true
+			$"../../..".visible = true
 			
 			$"VBoxContainer/NameLabel".text = shopItem.humanName
 			
@@ -19,6 +19,8 @@ func SetPreview(var shopItem : ShopItem):
 				$"VBoxContainer/QuantityLabel".text = "Quantity: " + str(shopItem.amount)
 			else:
 				$"VBoxContainer/QuantityLabel".visible = false
+			
+			$"VBoxContainer/CenterContainer/Control".texture = shopItem.texture
 			
 			if shopItem.has_method("GetProfits"):
 				var costs = preview.GetCosts()
@@ -33,7 +35,7 @@ func SetPreview(var shopItem : ShopItem):
 				GameManager.ResourceManager.PreviewCosts(preview.GetCosts(), true)
 	
 	else:
-		$"VBoxContainer".visible = false
+		$"../../..".visible = false
 	
 func _process(delta):
 	if preview != null:

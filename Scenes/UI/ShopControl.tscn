@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Theme/kenneyUI.tres" type="Theme" id=1]
 [ext_resource path="res://Images/Shelves.png" type="Texture" id=2]
-[ext_resource path="res://Images/Animation/Peony_00000.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/UI/PlantWithPot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Images/Animation/Flax_00000.png" type="Texture" id=6]
+[ext_resource path="res://Images/Shop.png" type="Texture" id=3]
+[ext_resource path="res://Images/PeonyLabel.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/GnomePot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Source/GDScript/Shop/UnlockBuildableShopItem.gd" type="Script" id=7]
 [ext_resource path="res://Source/GDScript/Shop/SeedsShopItem.gd" type="Script" id=8]
 [ext_resource path="res://Source/GDScript/UI/ShopControl.gd" type="Script" id=9]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Theme/kenneyUI-red.tres" type="Theme" id=12]
 [ext_resource path="res://Source/GDScript/Managers/Currency.gd" type="Script" id=13]
 [ext_resource path="res://Images/BlueGnome.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/SeedBag.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Images/FlaxLabel.png" type="Texture" id=18]
 
 [node name="ShopControl" type="MarginContainer"]
 anchor_right = 1.0
@@ -25,22 +27,23 @@ script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-shopItemIconInstance = ExtResource( 5 )
+shopItemSeedIconInstance = ExtResource( 15 )
+shopItemGnomeIconInstance = ExtResource( 5 )
 
 [node name="Inventory" type="Node" parent="."]
 
-[node name="FlaxSeedShopItem" type="Node" parent="Inventory"]
+[node name="FlaxSeedShopItem" type="Node" parent="Inventory" groups=["seed"]]
 script = ExtResource( 8 )
 humanName = "Flax"
-texture = ExtResource( 6 )
+texture = ExtResource( 18 )
 seedToPurchase = "Flax"
 amount = 50
 
 [node name="Gold" type="Node" parent="Inventory/FlaxSeedShopItem"]
 script = ExtResource( 13 )
-amount = 150
+amount = 80
 
-[node name="PeonySeedShopItem" type="Node" parent="Inventory"]
+[node name="PeonySeedShopItem" type="Node" parent="Inventory" groups=["seed"]]
 script = ExtResource( 8 )
 humanName = "Peony"
 texture = ExtResource( 4 )
@@ -49,9 +52,9 @@ amount = 100
 
 [node name="Gold" type="Node" parent="Inventory/PeonySeedShopItem"]
 script = ExtResource( 13 )
-amount = 1000
+amount = 480
 
-[node name="UnlockFisherGnomeShopItem" type="Node" parent="Inventory"]
+[node name="UnlockFisherGnomeShopItem" type="Node" parent="Inventory" groups=["gnome"]]
 script = ExtResource( 7 )
 humanName = "Fisher"
 texture = ExtResource( 14 )
@@ -65,7 +68,7 @@ amount = 140
 margin_right = 1536.0
 margin_bottom = 1016.0
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Panel" type="TextureRect" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
@@ -73,11 +76,74 @@ margin_top = 32.0
 margin_right = -32.0
 margin_bottom = -32.0
 theme = ExtResource( 1 )
+texture = ExtResource( 3 )
+
+[node name="Shelf1Row1" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 118.0
+margin_top = 206.0
+margin_right = 497.0
+margin_bottom = 378.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/Shelf1Row1"]
+margin_right = 379.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Shelf1Row2" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 116.0
+margin_top = 409.0
+margin_right = 495.0
+margin_bottom = 581.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shelf1Row3" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 116.0
+margin_top = 608.0
+margin_right = 495.0
+margin_bottom = 780.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shelf2Row1" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 600.0
+margin_top = 206.0
+margin_right = 979.0
+margin_bottom = 378.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Panel/Shelf2Row1"]
+margin_right = 379.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Shelf2Row2" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 598.0
+margin_top = 409.0
+margin_right = 977.0
+margin_bottom = 581.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shelf2Row3" type="MarginContainer" parent="Panel/Panel"]
+margin_left = 598.0
+margin_top = 608.0
+margin_right = 977.0
+margin_bottom = 780.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Panel/Panel"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -152,7 +218,7 @@ __meta__ = {
 
 [node name="Panel" type="Panel" parent="Panel/Panel/MarginContainer"]
 margin_right = 395.0
-margin_bottom = 606.0
+margin_bottom = 610.0
 theme = ExtResource( 12 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/MarginContainer/Panel"]
@@ -168,12 +234,11 @@ __meta__ = {
 
 [node name="PurchasePreviewPanel" type="Panel" parent="Panel/Panel/MarginContainer/Panel/MarginContainer"]
 margin_right = 331.0
-margin_bottom = 542.0
+margin_bottom = 546.0
 theme = ExtResource( 1 )
 script = ExtResource( 11 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 1
@@ -181,28 +246,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NameLabel" type="Label" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
-margin_top = 205.0
+[node name="CenterContainer" type="CenterContainer" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
+margin_top = 105.0
 margin_right = 331.0
-margin_bottom = 237.0
+margin_bottom = 305.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="TextureRect" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer/CenterContainer"]
+margin_left = 65.0
+margin_right = 265.0
+margin_bottom = 200.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 200, 200 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="NameLabel" type="Label" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
+margin_top = 309.0
+margin_right = 331.0
+margin_bottom = 341.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Item Name"
 align = 1
 
 [node name="QuantityLabel" type="Label" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
-margin_top = 241.0
+margin_top = 345.0
 margin_right = 331.0
-margin_bottom = 273.0
+margin_bottom = 377.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Quantity: %s"
 align = 1
 
 [node name="MarginContainer" type="CenterContainer" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer"]
-margin_top = 277.0
+margin_top = 381.0
 margin_right = 331.0
-margin_bottom = 337.0
+margin_bottom = 441.0
 size_flags_vertical = 0
 
 [node name="PurchaseButton" type="Button" parent="Panel/Panel/MarginContainer/Panel/MarginContainer/PurchasePreviewPanel/VBoxContainer/MarginContainer"]

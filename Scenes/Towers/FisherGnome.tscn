@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Source/CSharp/EntityComponents/TargetingComponent.cs" type="Script" id=1]
 [ext_resource path="res://Images/BlueGnome.png" type="Texture" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Scenes/Projectiles/GnomeFish.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Source/GDScript/Managers/Currency.gd" type="Script" id=10]
 [ext_resource path="res://Source/GDScript/EntityComponents/Buildable.gd" type="Script" id=11]
+[ext_resource path="res://Source/GDScript/SkillSystem/SkillUnlocker.gd" type="Script" id=12]
+[ext_resource path="res://Images/UpgradeDisplay.png" type="Texture" id=13]
+[ext_resource path="res://Shaders/FlashingShader.tres" type="Material" id=14]
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 32 )
@@ -43,9 +46,18 @@ position = Vector2( 32, 32 )
 script = ExtResource( 5 )
 job = "Fisherman"
 
+[node name="UpgradeDisplay" type="Sprite" parent="EntityData"]
+visible = false
+material = ExtResource( 14 )
+position = Vector2( 0, -6 )
+z_index = -1
+texture = ExtResource( 13 )
+
 [node name="ProjectileLauncher" type="Node2D" parent="."]
+visible = false
 position = Vector2( 32, 48 )
 script = ExtResource( 7 )
+projectileDamage = 10
 
 [node name="Body" type="Area2D" parent="."]
 pause_mode = 2
@@ -75,6 +87,7 @@ customTargetPath = NodePath("../TargetArea")
 
 [node name="Movable" type="Node" parent="."]
 script = ExtResource( 11 )
+blueprintSprite = ExtResource( 2 )
 
 [node name="Gold" type="Node" parent="Movable"]
 script = ExtResource( 10 )
@@ -91,5 +104,11 @@ amount = 20
 script = ExtResource( 10 )
 amount = 16
 
+[node name="SkillUnlocker" type="Node" parent="."]
+script = ExtResource( 12 )
+skillTreeName = "Fisher"
+entityDataPath = NodePath("../EntityData")
+
 [connection signal="timeout" from="MeleeShootingController/Timer" to="MeleeShootingController" method="_on_Timer_timeout"]
+[connection signal="ProjectileKilledEntity" from="ProjectileLauncher" to="EntityData" method="KilledEntity"]
 [connection signal="input_event" from="Body" to="Body" method="_on_Body_input_event"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+var caughtEntities = []
+
 func _ready():
 	GameManager.BulletManager = self
 	

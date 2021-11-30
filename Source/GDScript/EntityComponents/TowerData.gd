@@ -10,6 +10,8 @@ var skillPoints : int = 0
 
 var doDraw = false
 
+var pickUpBonuses = {"harvestable" : 0, "fishable" : 0}
+
 signal OnSkillPointsUpdated(amount)
 
 func SetSkillPoints(var amount):
@@ -20,7 +22,9 @@ func SetSkillPoints(var amount):
 		var skillUnlocker = get_parent().get_node("SkillUnlocker")
 		$UpgradeDisplay.visible = skillUnlocker.CanUnlockAnySkills(amount)
 	
-
+func GetPickUpBonus(pickupGroup):
+	return pickUpBonuses[pickupGroup]
+	
 func KilledEntity(var entity):
 	if entity.is_in_group("enemy"):
 		totalKills += 1

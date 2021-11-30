@@ -17,6 +17,7 @@ func StartWave(waveId):
 	if wave != null:
 		wave.StartWave()
 		PeonyToGold()
+		FlaxToGold()
 		GameManager.DataManager.Day = currentWave +1
 
 func StartNextWave():
@@ -24,6 +25,7 @@ func StartNextWave():
 	if wave != null:
 		wave.StartWave()
 		PeonyToGold()
+		FlaxToGold()
 		GameManager.DataManager.Day = currentWave+1
 		
 
@@ -35,10 +37,25 @@ func WaveFinished( wave : Node):
 func PeonyToGold():
 	var peony = GameManager.ResourceManager.get_node("Peony")
 	
-	var amountToConvert = floor(peony.amount * 0.25)
+	var amountToConvert = floor(peony.amount * 0.20)
 	var cost = Currency.new()
 	cost.name = "Peony"
 	cost.amount = amountToConvert
 	
+	GameManager.DataManager.totalFlowersSold += amountToConvert;
+	
 	GameManager.ResourceManager.Spend(cost)
 	GameManager.ResourceManager.AddResource("Gold", floor(amountToConvert*GameManager.ResourceManager.peonyToGoldRate))
+
+func FlaxToGold():
+	var flax = GameManager.ResourceManager.get_node("Flax")
+	
+	var amountToConvert = floor(flax.amount * 0.20)
+	var cost = Currency.new()
+	cost.name = "Flax"
+	cost.amount = amountToConvert
+	
+	GameManager.DataManager.totalFlowersSold += amountToConvert;
+	
+	GameManager.ResourceManager.Spend(cost)
+	GameManager.ResourceManager.AddResource("Gold", amountToConvert)

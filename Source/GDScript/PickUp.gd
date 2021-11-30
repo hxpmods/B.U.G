@@ -14,11 +14,14 @@ func _on_Body_Selected(entity):
 	PickUp()
 	
 
-func PickUp():
+func PickUp( var bonus = 0):
 	if !pickedUp:
 		
 		pickedUp = true
-		GameManager.ResourceManager.AddResource(resource.name,resource.amount)
+		GameManager.ResourceManager.AddResource(resource.name,resource.amount + bonus)
+		if is_in_group("harvestable"):
+			GameManager.DataManager.totalFlowersHarvested += resource.amount
+		
 		$Particles2D.emitting = true
 		GameManager.AudioManager.PlayPickup()
 		texture = null

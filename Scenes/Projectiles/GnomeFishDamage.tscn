@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Projectiles/ForceRotate.gd" type="Script" id=1]
 [ext_resource path="res://Source/GDScript/Projectiles/FishingProjectile.gd" type="Script" id=2]
-[ext_resource path="res://Source/GDScript/Projectiles/ImpactHandlerDamage.gd" type="Script" id=3]
+[ext_resource path="res://Source/GDScript/Projectiles/ImpactHandlerDamageAndPull.gd" type="Script" id=3]
 [ext_resource path="res://Images/FishHook.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D"]
@@ -13,6 +13,7 @@ impactHandlerPath = NodePath("ImpactHandler")
 [node name="ImpactHandler" type="Node2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 script = ExtResource( 3 )
+damage = 10
 
 [node name="Hook" type="Sprite" parent="."]
 position = Vector2( -10, -2 )

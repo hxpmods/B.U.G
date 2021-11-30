@@ -215,6 +215,9 @@ public class Ant : Sprite
                 if (dir.Length() < 5.0)
                 {
                     goal.GetParent().Call("Damage", 30);
+                    var gameManager = GetNode<Node>("/root/GameManager");
+                    DataManager data = (DataManager)gameManager.Get("DataManager");
+                    data.totalBugLeaks += 1;
                     deathQueued = DeathType.NonViolent;
                 }
             }

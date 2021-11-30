@@ -29,28 +29,31 @@ func _enter_tree():
 		look_at(target.global_position)
 
 func _physics_process(delta):
-	
-	if useLifetime:
-		lifeTime -= delta
-		if lifeTime <= 0:
-			Die()
-	
-	if !deathQueued:
-		position += transform.x * maxSpeed * delta
-		if !useCustomRange and is_instance_valid(shooter):
-			if global_position.distance_to(shooter.global_position) > shooter.get_parent().get_node("EntityData").GetRadius():
+	if get_class() == "Projectile":
+		if useLifetime:
+			lifeTime -= delta
+			if lifeTime <= 0:
 				Die()
-		else:
-			if global_position.distance_to(shooter.global_position) > customRange:
+		
+		if !deathQueued:
+			position += transform.x * maxSpeed * delta
+			if !useCustomRange and is_instance_valid(shooter):
+				if global_position.distance_to(shooter.global_position) > shooter.get_parent().get_node("EntityData").GetRadius():
+					Die()
+			else:
+				if global_position.distance_to(shooter.global_position) > customRange:
+					Die()
+					
+			var colliding = CheckCollision()
+			if colliding.size() > 0:
+				if impactHandler != null:
+					for collider in colliding:
+						impactHandler.handle_impact(collider["collider"])
 				Die()
 				
-		var colliding = CheckCollision()
-		if colliding.size() > 0:
-			if impactHandler != null:
-				for collider in colliding:
-					impactHandler.handle_impact(collider["collider"])
-			Die()
-		
+func get_class():
+	return "Projectile"
+
 func Die():
 	deathQueued = true
 	self.shooter.RemoveFromActiveProjectiles(self)

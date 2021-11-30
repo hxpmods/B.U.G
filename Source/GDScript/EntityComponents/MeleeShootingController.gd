@@ -36,10 +36,25 @@ func CanShoot():
 
 func ShootNormal():
 	if CanShoot():
-		var target = targetingComponent.currentTarget
-		projectileLauncher.Shoot(bulletScene, target)
-		$Timer.start()
-		timerActive= true
+		if CanAfford():
+			for cost in GetCosts():
+				GameManager.ResourceManager.Spend(cost)
+			var target = targetingComponent.currentTarget
+			projectileLauncher.Shoot(bulletScene, target)
+			$Timer.start()
+			timerActive= true
+
+func GetCosts():
+	var costs :Array
+	
+	for children in get_children():
+		if children.get_class() == "Currency":
+			costs.append(children)
+			
+	return costs
+
+func CanAfford():
+	return GameManager.ResourceManager.CanAffordCosts(GetCosts())
 
 func ShootHarvest():
 	if CanShoot():

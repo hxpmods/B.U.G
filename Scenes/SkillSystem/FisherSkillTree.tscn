@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Source/GDScript/SkillSystem/Skill.gd" type="Script" id=1]
+[ext_resource path="res://Source/GDScript/SkillSystem/SkillTree.gd" type="Script" id=2]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseRangeUpgrade.gd" type="Script" id=3]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreaseMeleeSpeedUpgrade.gd" type="Script" id=4]
+[ext_resource path="res://Source/GDScript/SkillSystem/AddMeleeBulletCost.gd" type="Script" id=5]
+[ext_resource path="res://Source/GDScript/SkillSystem/IncreasePickUpBonusUpgrade.gd" type="Script" id=6]
+
+[node name="SkillTree" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FishersFortune" type="Node" parent="."]
+script = ExtResource( 1 )
+UnlocksSkills = [ NodePath("../HiredHand") ]
+humanName = "Fortune"
+description = "Gains an extra 40% from coin drops."
+isRoot = true
+
+[node name="IncreasePickUpBonusUpgrade" type="Node" parent="FishersFortune"]
+script = ExtResource( 6 )
+increaseBy = 2
+pickupGroup = "fishable"
+
+[node name="HiredHand" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Hired Hand"
+description = "Attacks and harvests faster.
+Costs 1 gold per attack."
+
+[node name="IncreaseMeleeSpeedUpgrade" type="Node" parent="HiredHand"]
+script = ExtResource( 4 )
+increaseBy = 0.5
+
+[node name="AddMeleeBulletCostUpgrade" type="Node" parent="HiredHand"]
+script = ExtResource( 5 )
+currency = "Gold"
+
+[node name="CompoundRod" type="Node" parent="."]
+script = ExtResource( 1 )
+humanName = "Compound Rod"
+cost = 2
+description = "Increases range and attack speed."
+isRoot = true
+
+[node name="IncreaseMeleeSpeedUpgrade2" type="Node" parent="CompoundRod"]
+script = ExtResource( 4 )
+increaseBy = 0.25
+
+[node name="IncreaseRangeUpgrade" type="Node" parent="CompoundRod"]
+script = ExtResource( 3 )
+increaseBy = 96

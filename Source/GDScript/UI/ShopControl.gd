@@ -1,11 +1,12 @@
 extends MarginContainer
 
 
-export var shopItemIconInstance : PackedScene 
+export var shopItemSeedIconInstance : PackedScene 
+export var shopItemGnomeIconInstance : PackedScene 
 
-onready var shopRow1 = get_node("Panel/Panel/TextureRect/MarginContainer/VBoxContainer/ShopRow1")
-onready var shopRow2 = get_node("Panel/Panel/TextureRect/MarginContainer/VBoxContainer/ShopRow2")
-onready var shopRow3 = get_node("Panel/Panel/TextureRect/MarginContainer/VBoxContainer/ShopRow3")
+onready var shopRow1 = get_node("Panel/Panel/Shelf1Row1/HBoxContainer")
+onready var shopRow2 = get_node("Panel/Panel/Shelf2Row1/HBoxContainer")
+var shopRow3
 
 onready var inventory = get_node("Inventory")
 
@@ -39,7 +40,15 @@ func RemoveItem( item : ShopItem):
 	
 
 func AddItemToRow(item, row):
-	var icon = shopItemIconInstance.instance()
+	
+	var icon
+	
+	if item.is_in_group("seed"):
+		icon = shopItemSeedIconInstance.instance()
+	
+	if item.is_in_group("gnome"):
+		icon = shopItemGnomeIconInstance.instance()
+
 	icon.SetShopItem(item)
 	icon.connect("Selected", self, "OnShopItemSelected")
 	row.add_child(icon)

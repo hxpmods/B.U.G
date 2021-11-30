@@ -1,12 +1,15 @@
 extends WaveAction
-class_name WinGameWaveAction
+class_name WaitWaveAction
 
+export var waitTime : float = 1
 var finished = false
 
 func IsCompleted():
 	return finished
 
 func Start():
-	GameManager.WinGame()
+	.Start()
+	yield(get_tree().create_timer(waitTime),"timeout")
 	finished = true
+
 	

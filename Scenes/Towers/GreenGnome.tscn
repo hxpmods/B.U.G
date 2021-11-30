@@ -30,7 +30,7 @@ script = ExtResource( 4 )
 
 [node name="Movable" type="Node" parent="." groups=["tower"]]
 script = ExtResource( 10 )
-blueprintSprite = ExtResource( 2 )
+blueprintSprite = ExtResource( 13 )
 
 [node name="Gold" type="Node" parent="Movable"]
 script = ExtResource( 11 )

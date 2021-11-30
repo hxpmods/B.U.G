@@ -18,6 +18,11 @@ public class ResourceManager : Node
         {
             var node = this.GetNode(resName);
             node.Call("SetAmount", new object[] { (int)node.Get("amount") + amount });
+            if( resName == "Gold")
+            {
+                DataManager dataManager = GetParent<DataManager>();
+                dataManager.totalGoldEarned += amount;
+            }
         }
     }
 

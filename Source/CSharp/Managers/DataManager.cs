@@ -5,6 +5,12 @@ public class DataManager : Node
 {
     int day = 0;
     int totalBugKills = 0;
+    public int totalBugLeaks = 0;
+    public int totalGoldEarned = 0;
+    int totalFlowersHarvested = 0;
+    int totalPeoniePlantsLost = 0;
+    int totalFlowersSold = 0;
+
     int peoniesAlive = 0;
 
     [Signal]
@@ -21,10 +27,11 @@ public class DataManager : Node
     public void RemovePeony()
     {
         peoniesAlive -= 1;
+        totalPeoniePlantsLost++;
         if( peoniesAlive == 0)
         {
             var gameManager = GetNode<Node>("/root/GameManager");
-            gameManager.Call("SetGameState", 3);
+            gameManager.Call("LoseGame");
         }
     }
 
@@ -38,7 +45,7 @@ public class DataManager : Node
 
     public string GetGameOverStats()
     {
-        return $"Days Survived: {Day}\nBugs Killed: {TotalBugKills}";
+        return $"Days Survived: {Day}\nBugs Killed: {TotalBugKills}\nBugs Leaked: {totalBugLeaks}\nTotal coins earned: {totalGoldEarned}\nTotal flowers harvested: {totalFlowersHarvested}\nTotal flowers sold: {totalFlowersSold}\nTotal Peonie  plants lost: {totalPeoniePlantsLost}";
     }
 
     public int Day

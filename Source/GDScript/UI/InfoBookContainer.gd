@@ -13,6 +13,9 @@ func Start(data):
 	var offscreenPos = origPosition
 	offscreenPos.y += 350
 	$InfoBookContainer.data = data
+	
+	$"InfoBookContainer/Control2/MarginContainer/ContextPanel/CenterContainer/VBoxContainer/BottomContext/UpgradeButton".pressed = false
+	
 	$Tween.interpolate_property(self,"rect_global_position",offscreenPos,origPosition,0.7,Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$Tween.start()
 	
