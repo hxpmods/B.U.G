@@ -118,14 +118,6 @@ mouse_default_cursor_shape = 2
 shortcut_in_tooltip = false
 text = "New Game"
 
-[node name="Button2" type="Button" parent="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer"]
-margin_top = 64.0
-margin_right = 344.0
-margin_bottom = 120.251
-mouse_default_cursor_shape = 2
-shortcut_in_tooltip = false
-text = "Settings"
-
 [node name="LumberGnome" type="Sprite" parent="MainMenu"]
 position = Vector2( 600, 728 )
 scale = Vector2( 0.6, 0.6 )
@@ -149,4 +141,3 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer/Button" to="MainMenu" method="_on_Button_pressed"]
-[connection signal="pressed" from="MainMenu/TextureRect/CenterContainer/Panel/VBoxContainer/Panel2/VBoxContainer/Button2" to="MainMenu" method="_on_Button_pressed"]

@@ -49,7 +49,9 @@ func _ready():
 	title = GetRandomName()
 
 func GetRandomName():
-	return "Melvin"
+	var names = ["Melvin", "Wendy", "Simon", "Ronald", "Harper", "Dave", "Clark", "Bruce", "Darren", "Wally", "Helena", "Diana", "Pamela", "Arthur", "Tim", "Laurel", "Simone", "Gnarls", "Jessica", "Felicia"]
+	var value = names[randi()%names.size()]
+	return value
 
 func GetDataBodyText():
 	return "Profession:\n\t%s\nKill Amount:\n\t%s\nHarvest Amount:\n\t%s\nTo Next Skill:\n\t%s\nSkill Points:\n\t%s\n" % [job, totalKills, totalHarvests,GetKillsToNextLevel(), skillPoints]

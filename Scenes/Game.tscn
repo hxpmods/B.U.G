@@ -475,7 +475,7 @@ adjustment_contrast = 0.9
 [node name="Game" type="Node2D"]
 z_index = 20
 script = ExtResource( 78 )
-initialWave = 10
+initialWave = 7
 
 [node name="Buildables" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -1798,8 +1798,8 @@ script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 spawnType = "Skitter"
 setActive = true
-amountToSpawn = 24
-spawnRate = 0.4
+amountToSpawn = 48
+spawnRate = 0.8
 finishOnAmount = 4
 
 [node name="ControlSpawnerWaveAction2" type="Node" parent="WaveManager/Wave11"]
@@ -1914,7 +1914,67 @@ script = ExtResource( 13 )
 [node name="Wave13" type="Node" parent="WaveManager"]
 script = ExtResource( 18 )
 
-[node name="Beetle3" type="Node" parent="WaveManager/Wave13"]
+[node name="ControlSpawnerWaveAction" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill")
+setActive = true
+amountToSpawn = 80
+spawnRate = 2.0
+finishOnAmount = 1
+
+[node name="ControlSpawnerWaveAction3" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill2")
+setActive = true
+amountToSpawn = 80
+spawnRate = 2.0
+finishOnAmount = 1
+
+[node name="ControlSpawnerWaveAction4" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill5")
+setActive = true
+amountToSpawn = 80
+spawnRate = 2.0
+
+[node name="WaitWaveAction" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 13 )
+
+[node name="ControlSpawnerBeetle" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill2")
+spawnType = "Skitter"
+setActive = true
+amountToSpawn = 30
+spawnRate = 1.0
+finishOnAmount = 4
+
+[node name="ControlSpawnerWaveAction2" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill")
+setActive = true
+amountToSpawn = 80
+spawnRate = 2.5
+
+[node name="ControlSpawnerBeetle2" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 73 )
+spawnerPath = NodePath("../../../EntityManager/AntHill2")
+spawnType = "Skitter"
+setActive = true
+amountToSpawn = 30
+spawnRate = 1.0
+finishOnAmount = 4
+
+[node name="CheckAntDeathAction" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 7 )
+
+[node name="WaitWaveAction2" type="Node" parent="WaveManager/Wave13"]
+script = ExtResource( 13 )
+
+[node name="Wave14" type="Node" parent="WaveManager"]
+script = ExtResource( 18 )
+
+[node name="Beetle3" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill6")
 spawnType = "Beetle"
@@ -1923,7 +1983,7 @@ amountToSpawn = 20
 spawnRate = 0.3
 finishOnAmount = 1
 
-[node name="Beetle4" type="Node" parent="WaveManager/Wave13"]
+[node name="Beetle4" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill7")
 spawnType = "Beetle"
@@ -1932,7 +1992,7 @@ amountToSpawn = 20
 spawnRate = 0.3
 finishOnAmount = 1
 
-[node name="Skitter3" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter3" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill3")
 spawnType = "Skitter"
@@ -1941,15 +2001,14 @@ amountToSpawn = 20
 spawnRate = 1.6
 finishOnAmount = 1
 
-[node name="Skitter4" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter4" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill4")
-spawnType = "Skitter"
 setActive = true
-amountToSpawn = 20
-spawnRate = 1.6
+amountToSpawn = 40
+spawnRate = 1.8
 
-[node name="Beetle5" type="Node" parent="WaveManager/Wave13"]
+[node name="Beetle5" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill3")
 spawnType = "Beetle"
@@ -1958,7 +2017,7 @@ amountToSpawn = 15
 spawnRate = 0.35
 finishOnAmount = 1
 
-[node name="Beetle6" type="Node" parent="WaveManager/Wave13"]
+[node name="Beetle6" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill4")
 spawnType = "Beetle"
@@ -1967,16 +2026,16 @@ amountToSpawn = 15
 spawnRate = 0.35
 finishOnAmount = 1
 
-[node name="Skitter5" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter5" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 spawnType = "Skitter"
 setActive = true
-amountToSpawn = 30
-spawnRate = 1.9
+amountToSpawn = 40
+spawnRate = 2.0
 finishOnAmount = 1
 
-[node name="Skitter6" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter6" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 spawnType = "Skitter"
@@ -1984,7 +2043,7 @@ setActive = true
 amountToSpawn = 30
 spawnRate = 1.9
 
-[node name="Skitter7" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter7" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 spawnType = "Skitter"
@@ -1993,7 +2052,7 @@ amountToSpawn = 20
 spawnRate = 2.0
 finishOnAmount = 1
 
-[node name="Skitter8" type="Node" parent="WaveManager/Wave13"]
+[node name="Skitter8" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 spawnType = "Skitter"
@@ -2001,70 +2060,10 @@ setActive = true
 amountToSpawn = 20
 spawnRate = 2.0
 
-[node name="CheckAntDeathAction4" type="Node" parent="WaveManager/Wave13"]
+[node name="CheckAntDeathAction4" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 7 )
 
-[node name="WaitWaveAction4" type="Node" parent="WaveManager/Wave13"]
-script = ExtResource( 13 )
-
-[node name="Wave14" type="Node" parent="WaveManager"]
-script = ExtResource( 18 )
-
-[node name="ControlSpawnerWaveAction" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill")
-setActive = true
-amountToSpawn = 80
-spawnRate = 2.0
-finishOnAmount = 1
-
-[node name="ControlSpawnerWaveAction3" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill2")
-setActive = true
-amountToSpawn = 80
-spawnRate = 2.0
-finishOnAmount = 1
-
-[node name="ControlSpawnerWaveAction4" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill5")
-setActive = true
-amountToSpawn = 80
-spawnRate = 2.0
-
-[node name="WaitWaveAction" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 13 )
-
-[node name="ControlSpawnerBeetle" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill2")
-spawnType = "Skitter"
-setActive = true
-amountToSpawn = 30
-spawnRate = 1.0
-finishOnAmount = 4
-
-[node name="ControlSpawnerWaveAction2" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill")
-setActive = true
-amountToSpawn = 80
-spawnRate = 2.5
-
-[node name="ControlSpawnerBeetle2" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill2")
-spawnType = "Skitter"
-setActive = true
-amountToSpawn = 30
-spawnRate = 1.0
-finishOnAmount = 4
-
-[node name="CheckAntDeathAction" type="Node" parent="WaveManager/Wave14"]
-script = ExtResource( 7 )
-
-[node name="WaitWaveAction2" type="Node" parent="WaveManager/Wave14"]
+[node name="WaitWaveAction4" type="Node" parent="WaveManager/Wave14"]
 script = ExtResource( 13 )
 
 [node name="Wave15Boss" type="Node" parent="WaveManager"]
@@ -2072,7 +2071,7 @@ script = ExtResource( 18 )
 
 [node name="Beetle1" type="Node" parent="WaveManager/Wave15Boss"]
 script = ExtResource( 73 )
-spawnerPath = NodePath("../../../EntityManager/AntHill3")
+spawnerPath = NodePath("../../../EntityManager/AntHill5")
 spawnType = "Beetle"
 setActive = true
 amountToSpawn = 5
@@ -2106,7 +2105,7 @@ spawnRate = 0.5
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill")
 setActive = true
-amountToSpawn = 30
+amountToSpawn = 60
 spawnRate = 2.5
 finishOnAmount = 5
 
@@ -2122,7 +2121,7 @@ spawnRate = 0.5
 script = ExtResource( 73 )
 spawnerPath = NodePath("../../../EntityManager/AntHill2")
 setActive = true
-amountToSpawn = 30
+amountToSpawn = 60
 spawnRate = 2.5
 finishOnAmount = 5
 

@@ -41,7 +41,7 @@ func StartGame():
 
 func StartDevMode(initialWave):
 	for currency in ResourceManager.get_children():
-		ResourceManager.AddResource(currency.name, 1000)
+		ResourceManager.AddResource(currency.name, 10000)
 	
 	for buildable in Buildables.get_children():
 		buildable.SetUnlocked(true)
